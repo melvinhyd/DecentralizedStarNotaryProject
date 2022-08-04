@@ -21,7 +21,6 @@ const App = {
       // get accounts
       const accounts = await web3.eth.getAccounts();
       this.account = accounts[0];
-      console.log("A/C: ", this.account);
     } catch (error) {
       console.error("Could not connect to contract or chain.");
     }
@@ -33,7 +32,6 @@ const App = {
   },
 
   createStar: async function() {
-    console.log("create star");
     const { createStar } = this.meta.methods;
     const name = document.getElementById("starName").value;
     const id = document.getElementById("starId").value;
@@ -46,7 +44,6 @@ const App = {
     const id = document.getElementById("lookid").value;
     const { lookUptokenIdToStarInfo } = this.meta.methods;
     const name = await lookUptokenIdToStarInfo(parseInt(id)).call();
-    console.log(id, " : ", name);
     App.setStatus(name + " found in " + this.account + "!");
   }
 
